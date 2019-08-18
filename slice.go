@@ -27,9 +27,9 @@ func Slice_merge(slice1, slice2 []interface{}) (c []interface{}) {
 	return
 }
 
-func In_slice(val interface{}, slice []interface{}) bool {
+func In_slice(val interface{}, slice []string) bool {
 	for _, v := range slice {
-		if v == val {
+		if val == v {
 			return true
 		}
 	}
@@ -65,9 +65,9 @@ func Slice_filter(slice []interface{}, a filtertype) (ftslice []interface{}) {
 	return
 }
 
-func Slice_diff(slice1, slice2 []interface{}) (diffslice []interface{}) {
+func Slice_diff(slice1, slice2 []string) (diffslice []interface{}) {
 	for _, v := range slice1 {
-		if !In_slice(v, slice2) {
+		if In_slice(v, slice2) {
 			diffslice = append(diffslice, v)
 		}
 	}
