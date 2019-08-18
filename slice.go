@@ -22,7 +22,7 @@ func Slice_randList(min, max int) []int {
 	return list
 }
 
-func Slice_merge(slice1, slice2 []interface{}) (c []interface{}) {
+func Slice_merge(slice1, slice2 []string) (c []interface{}) {
 	c = append(slice1, slice2...)
 	return
 }
@@ -36,14 +36,14 @@ func In_slice(val interface{}, slice []string) bool {
 	return false
 }
 
-func Slice_reduce(slice []interface{}, a reducetype) (dslice []interface{}) {
+func Slice_reduce(slice []string, a reducetype) (dslice []interface{}) {
 	for _, v := range slice {
 		dslice = append(dslice, a(v))
 	}
 	return
 }
 
-func Slice_rand(a []interface{}) (b interface{}) {
+func Slice_rand(a []string) (b interface{}) {
 	randnum := rand.Intn(len(a))
 	b = a[randnum]
 	return
@@ -56,7 +56,7 @@ func Slice_sum(intslice []int64) (sum int64) {
 	return
 }
 
-func Slice_filter(slice []interface{}, a filtertype) (ftslice []interface{}) {
+func Slice_filter(slice []string, a filtertype) (ftslice []interface{}) {
 	for _, v := range slice {
 		if a(v) {
 			ftslice = append(ftslice, v)
@@ -74,7 +74,7 @@ func Slice_diff(slice1, slice2 []string) (diffslice []interface{}) {
 	return
 }
 
-func Slice_intersect(slice1, slice2 []interface{}) (diffslice []interface{}) {
+func Slice_intersect(slice1, slice2 []string) (diffslice []interface{}) {
 	for _, v := range slice1 {
 		if !In_slice(v, slice2) {
 			diffslice = append(diffslice, v)
@@ -83,7 +83,7 @@ func Slice_intersect(slice1, slice2 []interface{}) (diffslice []interface{}) {
 	return
 }
 
-func Slice_chunk(slice []interface{}, size int) (chunkslice [][]interface{}) {
+func Slice_chunk(slice []string, size int) (chunkslice [][]interface{}) {
 	if size >= len(slice) {
 		chunkslice = append(chunkslice, slice)
 		return
@@ -103,7 +103,7 @@ func Slice_range(start, end, step int64) (intslice []int64) {
 	return
 }
 
-func Slice_pad(slice []interface{}, size int, val interface{}) []interface{} {
+func Slice_pad(slice []string, size int, val interface{}) []interface{} {
 	if size <= len(slice) {
 		return slice
 	}
@@ -122,7 +122,7 @@ func Slice_unique(slice []interface{}) (uniqueslice []interface{}) {
 	return
 }
 
-func Slice_shuffle(slice []interface{}) []interface{} {
+func Slice_shuffle(slice []string) []interface{} {
 	for i := 0; i < len(slice); i++ {
 		a := rand.Intn(len(slice))
 		b := rand.Intn(len(slice))
